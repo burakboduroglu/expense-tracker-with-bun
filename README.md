@@ -1,15 +1,17 @@
-# app
+# Expense Tracker
 
-To install dependencies:
+This project is a simple expense tracker that uses new technologies to create a modern web application.
 
-```bash
-bun install
-```
+Technologies have been used in this project:
 
-To run:
+- Bun
+- React
+- Drizzle
+- Tailwind CSS
+- Hono
+- Kinde
+- TypeScript
+- RPC
+- Tanstack
 
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.1.10. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Project structure:
