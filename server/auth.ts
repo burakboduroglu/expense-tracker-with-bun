@@ -10,7 +10,7 @@ export const authRoute = new Hono()
     const registerUrl = await kindeClient.register(sessionManager(c));
     return c.redirect(registerUrl.toString());
   })
-  .get("/callbakc", async (c) => {
+  .get("/callback", async (c) => {
     const url = new URL(c.req.url);
     await kindeClient.handleRedirectToApp(sessionManager(c), url);
     return c.redirect("/");
