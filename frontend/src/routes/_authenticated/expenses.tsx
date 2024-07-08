@@ -12,7 +12,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-
 export const Route = createFileRoute("/_authenticated/expenses")({
   component: Expenses,
 });
@@ -33,7 +32,7 @@ function Expenses() {
   if (error) return "An error has occurred:" + error;
 
   return (
-    <div className="p-10 max-w-4xl mx-auto">
+    <div className="m-auto max-w-3xl p-2">
       <Table>
         <TableCaption>A list of your expenses.</TableCaption>
         <TableHeader>
@@ -44,11 +43,13 @@ function Expenses() {
         </TableHeader>
         <TableBody>
           {isPending ? (
-            <ExpenseSkeleton/>
+            <ExpenseSkeleton />
           ) : (
             data?.expenses.map((expense) => (
               <TableRow key={expense.id}>
-                <TableCell className="font-medium">{expense.title}</TableCell>
+                <TableCell className="whitespace-nowrap font-medium">
+                  {expense.title}
+                </TableCell>
                 <TableCell className="font-xl">{expense.amount}</TableCell>
               </TableRow>
             ))
@@ -63,13 +64,15 @@ export function ExpenseSkeleton() {
   return Array(3)
     .fill(0)
     .map((_, i) => {
-     return <TableRow key={i}>
-        <TableCell className="font-medium">
-          <Skeleton className="h-4 w-[250px]" />
-        </TableCell>
-        <TableCell>
-          <Skeleton className="h-4 w-[200px]" />
-        </TableCell>
-      </TableRow>;
+      return (
+        <TableRow key={i}>
+          <TableCell className="font-medium">
+            <Skeleton className="h-4 w-[250px]" />
+          </TableCell>
+          <TableCell>
+            <Skeleton className="h-4 w-[200px]" />
+          </TableCell>
+        </TableRow>
+      );
     });
 }
