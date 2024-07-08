@@ -9,7 +9,6 @@ import {
 import {api} from "../../lib/api.ts";
 import {useQuery} from "@tanstack/react-query"
 
-// @ts-ignore
 export const Route = createFileRoute('/')({
     component: Index,
 })
