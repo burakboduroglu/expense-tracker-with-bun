@@ -1,11 +1,13 @@
-import {
-  Outlet,
-  createFileRoute,
-} from "@tanstack/react-router";
+import { Outlet, createFileRoute } from "@tanstack/react-router";
 import { userQueryOptions } from "../lib/api"; // Ensure this import is correct and necessary
 
 const Login = () => {
-  return <div>You have to login</div>;
+  return (
+    <div>
+      <p>You have to login</p>
+      <a href="/api/login">Login</a>
+    </div>
+  );
 };
 
 const Component = () => {
@@ -17,9 +19,14 @@ const Component = () => {
 };
 
 export const Route = createFileRoute("/_authenticated")({
-  beforeLoad: async () => {
-    userQueryOptions;
-    return { user: null };
+  beforeLoad: async ({ context }) => {
+    const queryClient = context.queryClient;
+    try {
+      const data = await queryClient.fetchQuery(userQueryOptions);
+      return data;
+    } catch (e) {
+      return { user: null };
+    }
   },
   component: Component,
 });
