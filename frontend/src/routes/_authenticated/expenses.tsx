@@ -37,7 +37,9 @@ function Expenses() {
         <TableCaption>A list of your expenses.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Title</TableHead>
+            <TableHead>Id</TableHead>
+            <TableHead>Title</TableHead>
+            <TableHead>Amount</TableHead>
             <TableHead>Amount</TableHead>
           </TableRow>
         </TableHeader>
@@ -47,10 +49,14 @@ function Expenses() {
           ) : (
             data?.expenses.map((expense) => (
               <TableRow key={expense.id}>
+                <TableCell className="font-xl">{expense.id}</TableCell>
                 <TableCell className="whitespace-nowrap font-medium">
                   {expense.title}
                 </TableCell>
                 <TableCell className="font-xl">{expense.amount}</TableCell>
+                <TableCell className="font-xl">
+                  {expense.date.split("T")[0]}
+                </TableCell>
               </TableRow>
             ))
           )}

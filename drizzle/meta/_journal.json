@@ -15,6 +15,13 @@
       "when": 1720550346064,
       "tag": "0001_fixed_dark_phoenix",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1720554381501,
+      "tag": "0002_mixed_sprite",
+      "breakpoints": true
     }
   ]
 }
