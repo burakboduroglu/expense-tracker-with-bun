@@ -4,6 +4,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useForm } from "@tanstack/react-form";
 import { api } from "../../lib/api";
+import { zodValidator } from "@tanstack/zod-form-adapter";
+import { createExpenseSchema } from "../../../../server/sharedTypes";
 
 export const Route = createFileRoute("/_authenticated/create-expense")({
   component: CreateExpenses,
@@ -12,6 +14,7 @@ export const Route = createFileRoute("/_authenticated/create-expense")({
 function CreateExpenses() {
   const navigate = useNavigate();
   const form = useForm({
+    validatorAdapter: zodValidator(),
     defaultValues: {
       title: "",
       amount: "",
@@ -27,7 +30,7 @@ function CreateExpenses() {
 
   return (
     <div className="p-2">
-      <h2>Create Expense</h2>
+      <h1 className="pb-5 text-center text-lg font-bold">Create Expense</h1>
       <form
         className="m-auto max-w-4xl"
         onSubmit={(e) => {
@@ -38,8 +41,11 @@ function CreateExpenses() {
       >
         <form.Field
           name="title"
+          validators={{
+            onChange: createExpenseSchema.shape.title,
+          }}
           children={(field) => (
-            <>
+            <div className="pb-3">
               <Label htmlFor={field.name}>Title</Label>
               <Input
                 type="text"
@@ -54,14 +60,17 @@ function CreateExpenses() {
                 <em>{field.state.meta.errors.join(", ")}</em>
               ) : null}
               {field.state.meta.isValidating ? "Validating..." : null}
-            </>
+            </div>
           )}
         />
 
         <form.Field
           name="amount"
+          validators={{
+            onChange: createExpenseSchema.shape.amount,
+          }}
           children={(field) => (
-            <>
+            <div className="pb-4">
               <Label htmlFor={field.name}>Amount</Label>
               <Input
                 type="number"
@@ -76,7 +85,7 @@ function CreateExpenses() {
                 <em>{field.state.meta.errors.join(", ")}</em>
               ) : null}
               {field.state.meta.isValidating ? "Validating..." : null}
-            </>
+            </div>
           )}
         />
 
