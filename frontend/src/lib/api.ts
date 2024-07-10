@@ -6,7 +6,6 @@ const client = hc<apiRoutes>("/");
 
 export const api = client.api;
 
-
 async function getCurrentUser() {
   const res = await api.me.$get();
   if (!res.ok) throw new Error("server error");
@@ -16,5 +15,4 @@ async function getCurrentUser() {
 export const userQueryOptions = queryOptions({
   queryKey: ["get-current-spent"],
   queryFn: getCurrentUser,
-  staleTime: Infinity
 });

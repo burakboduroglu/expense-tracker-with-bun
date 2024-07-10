@@ -6,3 +6,5 @@ export const createExpenseSchema = insertExpensesSchema.omit({
   createdAt: true,
   id: true,
 });
+
+export type CreateExpense = z.infer<typeof createExpenseSchema>;
