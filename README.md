@@ -21,3 +21,7 @@ This project is a simple expense tracker that uses new technologies to create a 
 ### Give a Star
 
 Thank you for visiting our project! If you find it useful or interesting, please consider giving it a star ⭐️ on GitHub. It helps us grow and reach more people. Your support is greatly appreciated!
+
+### YouTube
+
+You can watch project video on [Project Link](https://youtu.be/IsMeZpeeZ6A)
